@@ -199,6 +199,11 @@ __weak static UIViewController *_defaultViewController;
         if (!currentView.viewController.navigationController.isToolbarHidden) {
             y -= CGRectGetHeight(currentView.viewController.navigationController.toolbar.bounds);
         }
+        if ([currentView.viewController.view respondsToSelector:@selector(contentOffset)]) {
+            UIScrollView *scrollView = (UIScrollView *)currentView.viewController.view;
+            CGPoint contentOffset = scrollView.contentOffset;
+            y += contentOffset.y;
+        }
         toPoint = CGPointMake(currentView.center.x, y);
     }
 
