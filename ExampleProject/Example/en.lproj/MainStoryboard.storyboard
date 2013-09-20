@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -153,9 +154,6 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD8-pS-pWg">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="Cy9-U6-wbf"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Load custom design">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
@@ -168,6 +166,22 @@
                                     <action selector="didTapCustomDesign:" destination="3" eventType="touchUpInside" id="Q5n-Fb-cOv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-u7-Do8">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="SAY-6t-6OW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Custom image">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapCustomImage:" destination="3" eventType="touchUpInside" id="soX-6d-S5V"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uh-lk-Mza">
                                 <color key="backgroundColor" red="0.50651749320652173" green="0.50651749320652173" blue="0.50651749320652173" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -177,36 +191,37 @@
                             <constraint firstItem="zxX-aS-md3" firstAttribute="top" secondItem="17" secondAttribute="top" constant="186" id="0bX-Rg-fCt"/>
                             <constraint firstItem="pne-hG-1yy" firstAttribute="baseline" secondItem="hAh-Ka-NMA" secondAttribute="baseline" type="default" id="28g-uv-mSE"/>
                             <constraint firstItem="36v-bR-L60" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4Gy-Q8-IsW"/>
-                            <constraint firstAttribute="bottom" secondItem="36v-bR-L60" secondAttribute="bottom" constant="174" id="4kG-be-D3e"/>
                             <constraint firstItem="9uh-lk-Mza" firstAttribute="top" secondItem="17" secondAttribute="top" constant="44" id="AiG-0o-Y0J"/>
                             <constraint firstItem="zLn-b7-lUs" firstAttribute="trailing" secondItem="zxX-aS-md3" secondAttribute="trailing" type="default" id="CfO-Gx-ikg"/>
+                            <constraint firstAttribute="bottom" secondItem="PD8-pS-pWg" secondAttribute="bottom" constant="15" id="D6I-AW-QTy"/>
                             <constraint firstItem="zLn-b7-lUs" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Etn-fc-aPe"/>
                             <constraint firstItem="pne-hG-1yy" firstAttribute="baseline" secondItem="zLn-b7-lUs" secondAttribute="baseline" type="default" id="KHR-aR-OLj"/>
                             <constraint firstItem="pne-hG-1yy" firstAttribute="top" secondItem="9uh-lk-Mza" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="O3S-sO-mjw"/>
                             <constraint firstItem="pne-hG-1yy" firstAttribute="trailing" secondItem="hxl-lo-RFJ" secondAttribute="trailing" type="default" id="PXW-Xx-QEH"/>
+                            <constraint firstAttribute="bottom" secondItem="36v-bR-L60" secondAttribute="bottom" constant="128" id="PZh-sd-2uW"/>
+                            <constraint firstItem="PD8-pS-pWg" firstAttribute="centerX" secondItem="17" secondAttribute="centerX" type="default" id="RsU-dq-5f3"/>
                             <constraint firstItem="zxX-aS-md3" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ucv-GT-hEs"/>
                             <constraint firstItem="pne-hG-1yy" firstAttribute="top" secondItem="17" secondAttribute="top" constant="124" id="UiP-5H-OND"/>
                             <constraint firstItem="zxX-aS-md3" firstAttribute="trailing" secondItem="36v-bR-L60" secondAttribute="trailing" type="default" id="Vrj-R9-WoE"/>
                             <constraint firstItem="Q12-ec-HEe" firstAttribute="leading" secondItem="dp9-zc-ECU" secondAttribute="leading" type="default" id="VzS-Es-Ra6"/>
+                            <constraint firstAttribute="bottom" secondItem="l7u-u7-Do8" secondAttribute="bottom" constant="184" id="Zdt-Cn-M6q"/>
                             <constraint firstItem="hxl-lo-RFJ" firstAttribute="leading" secondItem="pne-hG-1yy" secondAttribute="leading" type="default" id="aQE-sc-gTU"/>
-                            <constraint firstAttribute="bottom" secondItem="Q12-ec-HEe" secondAttribute="bottom" constant="108" id="ahK-JK-sFN"/>
-                            <constraint firstAttribute="bottom" secondItem="PD8-pS-pWg" secondAttribute="bottom" constant="34" id="b6w-An-wk6"/>
                             <constraint firstItem="zxX-aS-md3" firstAttribute="baseline" secondItem="hxl-lo-RFJ" secondAttribute="baseline" type="default" id="cNg-gf-jwn"/>
                             <constraint firstItem="9uh-lk-Mza" firstAttribute="centerX" secondItem="pne-hG-1yy" secondAttribute="centerX" type="default" id="cms-lz-yC2"/>
                             <constraint firstItem="Kd4-cj-zFf" firstAttribute="baseline" secondItem="hxl-lo-RFJ" secondAttribute="baseline" type="default" id="dha-21-YNZ"/>
                             <constraint firstAttribute="trailing" secondItem="cQR-ea-6Bc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fPY-TX-rs5"/>
                             <constraint firstItem="9uh-lk-Mza" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="109" id="je1-wc-Kp2"/>
+                            <constraint firstItem="l7u-u7-Do8" firstAttribute="centerX" secondItem="hxl-lo-RFJ" secondAttribute="centerX" type="default" id="l1p-rd-VKU"/>
+                            <constraint firstItem="l7u-u7-Do8" firstAttribute="leading" secondItem="PD8-pS-pWg" secondAttribute="leading" type="default" id="lLU-hu-0qL"/>
                             <constraint firstItem="cQR-ea-6Bc" firstAttribute="leading" secondItem="Kd4-cj-zFf" secondAttribute="leading" type="default" id="lOg-eO-BYd"/>
                             <constraint firstItem="dp9-zc-ECU" firstAttribute="baseline" secondItem="36v-bR-L60" secondAttribute="baseline" type="default" id="lkS-Id-nEI"/>
-                            <constraint firstItem="dp9-zc-ECU" firstAttribute="trailing" secondItem="hxl-lo-RFJ" secondAttribute="trailing" type="default" id="nDc-5h-MhZ"/>
-                            <constraint firstItem="9uh-lk-Mza" firstAttribute="centerX" secondItem="17" secondAttribute="centerX" type="default" id="pLQ-xL-L4r"/>
+                            <constraint firstItem="l7u-u7-Do8" firstAttribute="trailing" secondItem="PD8-pS-pWg" secondAttribute="trailing" type="default" id="p2e-xj-cP6"/>
                             <constraint firstItem="Kd4-cj-zFf" firstAttribute="leading" secondItem="hAh-Ka-NMA" secondAttribute="leading" type="default" id="qVC-PO-SIf"/>
                             <constraint firstItem="dp9-zc-ECU" firstAttribute="leading" secondItem="hxl-lo-RFJ" secondAttribute="leading" type="default" id="rZg-oe-weV"/>
                             <constraint firstItem="dp9-zc-ECU" firstAttribute="baseline" secondItem="cQR-ea-6Bc" secondAttribute="baseline" type="default" id="sE9-hw-MMV"/>
-                            <constraint firstItem="PD8-pS-pWg" firstAttribute="centerX" secondItem="Q12-ec-HEe" secondAttribute="centerX" type="default" id="tMp-Tj-aLa"/>
+                            <constraint firstItem="PD8-pS-pWg" firstAttribute="top" secondItem="Q12-ec-HEe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sQh-6L-4ah"/>
                             <constraint firstAttribute="trailing" secondItem="hAh-Ka-NMA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uDd-FU-Cem"/>
                             <constraint firstAttribute="trailing" secondItem="Kd4-cj-zFf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="yIz-b8-SaY"/>
-                            <constraint firstItem="Q12-ec-HEe" firstAttribute="trailing" secondItem="dp9-zc-ECU" secondAttribute="trailing" type="default" id="zI0-PU-bWa"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -226,6 +241,7 @@
                 <relationship kind="action" name="didTapBottom:"/>
                 <relationship kind="action" name="didTapButton:"/>
                 <relationship kind="action" name="didTapCustomDesign:"/>
+                <relationship kind="action" name="didTapCustomImage:"/>
                 <relationship kind="action" name="didTapDismissCurrentMessage:"/>
                 <relationship kind="action" name="didTapEndless:"/>
                 <relationship kind="action" name="didTapError:"/>

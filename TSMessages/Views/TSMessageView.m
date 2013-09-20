@@ -83,7 +83,8 @@ static NSMutableDictionary *_notificationDesign;
 }
 
 - (id)initWithTitle:(NSString *)title
-            subtitle:(NSString *)subtitle
+           subtitle:(NSString *)subtitle
+              image:(UIImage *)image
                type:(TSMessageNotificationType)notificationType
            duration:(CGFloat)duration
    inViewController:(UIViewController *)viewController
@@ -138,8 +139,8 @@ static NSMutableDictionary *_notificationDesign;
         
         current = [notificationDesign valueForKey:currentString];
 
-        UIImage *image;
-        if ([current valueForKey:@"imageName"])
+        
+        if (!image && [current valueForKey:@"imageName"])
         {
             image = [UIImage imageNamed:[current valueForKey:@"imageName"]];
         }
@@ -437,6 +438,13 @@ static NSMutableDictionary *_notificationDesign;
     [[TSMessage sharedMessage] performSelectorOnMainThread:@selector(fadeOutNotification:) withObject:self waitUntilDone:NO];
 }
 
+- (void)didMoveToWindow {
+    [super didMoveToWindow];
+    if (self.duration == TSMessageNotificationDurationEndless && self.superview && !self.window ) {
+        // view controller was dismissed, let's fade out
+        [self fadeMeOut];
+    }
+}
 #pragma mark - Target/Action
 
 - (void)buttonTapped:(id) sender

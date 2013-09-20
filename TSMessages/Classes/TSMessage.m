@@ -76,6 +76,7 @@ __weak static UIViewController *_defaultViewController;
     [self showNotificationInViewController:viewController
                                      title:title
                                   subtitle:subtitle
+                                     image:nil
                                       type:type
                                   duration:TSMessageNotificationDurationAutomatic
                                   callback:nil
@@ -89,6 +90,7 @@ __weak static UIViewController *_defaultViewController;
 + (void)showNotificationInViewController:(UIViewController *)viewController
                                    title:(NSString *)title
                                 subtitle:(NSString *)subtitle
+                                   image:(UIImage *)image
                                     type:(TSMessageNotificationType)type
                                 duration:(NSTimeInterval)duration
                                 callback:(void (^)())callback
@@ -100,6 +102,7 @@ __weak static UIViewController *_defaultViewController;
     // Create the TSMessageView
     TSMessageView *v = [[TSMessageView alloc] initWithTitle:title
                                                    subtitle:subtitle
+                                                      image:image
                                                        type:type
                                                    duration:duration
                                            inViewController:viewController
@@ -108,11 +111,11 @@ __weak static UIViewController *_defaultViewController;
                                              buttonCallback:buttonCallback
                                                  atPosition:messagePosition
                                           shouldBeDismissed:dismissingEnabled];
-    [self prepareNotificatoinToBeShown:v];
+    [self prepareNotificationToBeShown:v];
 }
 
 
-+ (void)prepareNotificatoinToBeShown:(TSMessageView *)messageView
++ (void)prepareNotificationToBeShown:(TSMessageView *)messageView
 {
     NSString *title = messageView.title;
     NSString *subtitle = messageView.subtitle;
@@ -153,7 +156,14 @@ __weak static UIViewController *_defaultViewController;
     
     TSMessageView *currentView = [self.messages objectAtIndex:0];
     
-    CGFloat verticalOffset = 0.0f;
+    __block CGFloat verticalOffset = 0.0f;
+    
+    void (^addStatusBarHeightToVerticalOffset)() = ^void() {
+        BOOL isPortrait = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]);
+        CGSize statusBarSize = [UIApplication sharedApplication].statusBarFrame.size;
+        CGFloat offset = isPortrait ? statusBarSize.height : statusBarSize.width;
+        verticalOffset += offset;
+    };
     
     if ([currentView.viewController isKindOfClass:[UINavigationController class]])
     {
@@ -162,24 +172,24 @@ __weak static UIViewController *_defaultViewController;
             [currentView.viewController.view insertSubview:currentView
                                               belowSubview:[(UINavigationController *)currentView.viewController navigationBar]];
             verticalOffset = [(UINavigationController *)currentView.viewController navigationBar].bounds.size.height;
-            
-            if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))
-            {
-                verticalOffset += [UIApplication sharedApplication].statusBarFrame.size.height;
-            }
-            else
-            {
-                verticalOffset += [UIApplication sharedApplication].statusBarFrame.size.width;
+            if ([TSMessage iOS7StyleEnabled]) {
+                addStatusBarHeightToVerticalOffset();
             }
         }
         else
         {
             [currentView.viewController.view addSubview:currentView];
+            if ([TSMessage iOS7StyleEnabled]) {
+                addStatusBarHeightToVerticalOffset();
+            }
         }
     }
     else
     {
         [currentView.viewController.view addSubview:currentView];
+        if ([TSMessage iOS7StyleEnabled]) {
+            addStatusBarHeightToVerticalOffset();
+        }
     }
     
     CGPoint toPoint;
@@ -333,8 +343,9 @@ __weak static UIViewController *_defaultViewController;
 {
     __strong UIViewController *defaultViewController = _defaultViewController;
     
-    if(!defaultViewController) {
-        NSLog(@"Attempted to present TSMessage in default view controller, but no default view controller was set. Use +[TSMessage setDefaultViewController:].");
+    if (!defaultViewController) {
+        NSLog(@"TSMessages: It is recommended to set a custom defaultViewController that is used to display the notifications");
+        defaultViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     }
     return defaultViewController;
 }
