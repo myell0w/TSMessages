@@ -131,5 +131,6 @@ typedef NS_ENUM(NSInteger,TSMessageNotificationDuration) {
 /** Indicates whether currently the iOS 7 style of TSMessasges is used
  This depends on the Base SDK and the currently used device */
 + (BOOL)iOS7StyleEnabled;
++ (void)setiOS7StyleEnabled:(BOOL)enabled;
 
 @end

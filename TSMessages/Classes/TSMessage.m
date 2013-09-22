@@ -365,4 +365,11 @@ __weak static UIViewController *_defaultViewController;
     return _useiOS7Style;
 }
 
++ (void)setiOS7StyleEnabled:(BOOL)enabled {
+    // calling the getter makes sure that the dispatch_once block is definitely called before setting the value
+    if ([self iOS7StyleEnabled] != enabled) {
+        _useiOS7Style = enabled;
+    }
+}
+
 @end

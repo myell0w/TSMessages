@@ -183,9 +183,13 @@ static NSMutableDictionary *_notificationDesign;
         } else {
             [self.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
         }
-        [self.titleLabel setShadowColor:[UIColor colorWithHexString:[current valueForKey:@"shadowColor"] alpha:1.0]];
-        [self.titleLabel setShadowOffset:CGSizeMake([[current valueForKey:@"shadowOffsetX"] floatValue],
-                                                    [[current valueForKey:@"shadowOffsetY"] floatValue])];
+
+        NSString *shadowColorString = [current valueForKey:@"shadowColor"];
+        if (shadowColorString != nil) {
+            [self.titleLabel setShadowColor:[UIColor colorWithHexString:shadowColorString alpha:1.0]];
+            [self.titleLabel setShadowOffset:CGSizeMake([[current valueForKey:@"shadowOffsetX"] floatValue],
+                                                        [[current valueForKey:@"shadowOffsetY"] floatValue])];
+        }
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self addSubview:self.titleLabel];
