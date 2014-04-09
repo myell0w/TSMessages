@@ -239,7 +239,7 @@ __weak static UIViewController *_defaultViewController;
                               delay:0
              usingSpringWithDamping:0.8
               initialSpringVelocity:0.f
-                            options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
+                            options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                          animations:animationBlock
                          completion:completionBlock];
         #endif
