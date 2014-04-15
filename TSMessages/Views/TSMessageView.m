@@ -260,9 +260,10 @@ static NSMutableDictionary *_notificationDesign;
             {
                 buttonTitleTextColor = fontColor;
             }
-            
+
+            CGFloat fontSize = [[current valueForKey:@"buttonFontSize"] floatValue];
             [self.button setTitleColor:buttonTitleTextColor forState:UIControlStateNormal];
-            self.button.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+            self.button.titleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
             self.button.titleLabel.shadowOffset = CGSizeMake([[current valueForKey:@"buttonTitleShadowOffsetX"] floatValue],
                                                              [[current valueForKey:@"buttonTitleShadowOffsetY"] floatValue]);
             [self.button addTarget:self
