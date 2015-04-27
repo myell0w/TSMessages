@@ -268,6 +268,9 @@ static NSMutableDictionary *_notificationDesign;
                   forControlEvents:UIControlEventTouchUpInside];
             
             self.button.contentEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0);
+            self.button.layer.borderWidth = 2.f;
+            self.button.layer.borderColor = buttonTitleTextColor.CGColor;
+            self.button.layer.cornerRadius = 4.f;
             [self.button sizeToFit];
             self.button.frame = CGRectMake(screenWidth - TSMessageViewPadding - self.button.frame.size.width,
                                            0.0,
